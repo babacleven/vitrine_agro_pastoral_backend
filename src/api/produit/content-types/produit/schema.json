@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "produits",
+  "info": {
+    "singularName": "produit",
+    "pluralName": "produits",
+    "displayName": "Produit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "nom": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "imagePrincipale": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "prix": {
+      "type": "decimal"
+    },
+    "categorie": {
+      "type": "enumeration",
+      "enum": [
+        "Légume",
+        "Viande",
+        "Produit transformé",
+        "Autre"
+      ]
+    },
+    "disponibilite": {
+      "type": "boolean"
+    }
+  }
+}

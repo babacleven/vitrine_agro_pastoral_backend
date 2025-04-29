@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activites",
+  "info": {
+    "singularName": "activite",
+    "pluralName": "activites",
+    "displayName": "Activite"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titre": {
+      "type": "string"
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "categorie": {
+      "type": "enumeration",
+      "enum": [
+        "agriculture",
+        " élevage",
+        " transformation,",
+        "autre"
+      ]
+    },
+    "ordreAffichage": {
+      "type": "integer"
+    }
+  }
+}
