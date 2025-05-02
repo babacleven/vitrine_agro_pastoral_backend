@@ -372,6 +372,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiActiviteActivite extends Struct.CollectionTypeSchema {
   collectionName: 'activites';
   info: {
+    description: '';
     displayName: 'Activite';
     pluralName: 'activites';
     singularName: 'activite';
@@ -387,6 +388,7 @@ export interface ApiActiviteActivite extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Blocks;
+    descriptionCourte: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -395,6 +397,7 @@ export interface ApiActiviteActivite extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     ordreAffichage: Schema.Attribute.Integer;
+    produits: Schema.Attribute.Relation<'manyToMany', 'api::produit.produit'>;
     publishedAt: Schema.Attribute.DateTime;
     titre: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -406,6 +409,7 @@ export interface ApiActiviteActivite extends Struct.CollectionTypeSchema {
 export interface ApiActualiteActualite extends Struct.CollectionTypeSchema {
   collectionName: 'actualites';
   info: {
+    description: '';
     displayName: 'Actualite';
     pluralName: 'actualites';
     singularName: 'actualite';
@@ -419,6 +423,7 @@ export interface ApiActualiteActualite extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     datePublication: Schema.Attribute.Date;
+    galeries: Schema.Attribute.Relation<'oneToMany', 'api::galerie.galerie'>;
     image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -474,6 +479,7 @@ export interface ApiEntrepriseEntreprise extends Struct.CollectionTypeSchema {
 export interface ApiGalerieGalerie extends Struct.CollectionTypeSchema {
   collectionName: 'galeries';
   info: {
+    description: '';
     displayName: 'Galerie';
     pluralName: 'galeries';
     singularName: 'galerie';
@@ -493,6 +499,7 @@ export interface ApiGalerieGalerie extends Struct.CollectionTypeSchema {
       'api::galerie.galerie'
     > &
       Schema.Attribute.Private;
+    produits: Schema.Attribute.Relation<'oneToMany', 'api::produit.produit'>;
     publishedAt: Schema.Attribute.DateTime;
     titre: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<['photo', 'video']>;
@@ -536,6 +543,7 @@ export interface ApiMessageMessage extends Struct.CollectionTypeSchema {
 export interface ApiProduitProduit extends Struct.CollectionTypeSchema {
   collectionName: 'produits';
   info: {
+    description: '';
     displayName: 'Produit';
     pluralName: 'produits';
     singularName: 'produit';
@@ -544,14 +552,20 @@ export interface ApiProduitProduit extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    activites: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::activite.activite'
+    >;
     categorie: Schema.Attribute.Enumeration<
       ['L\u00E9gume', 'Viande', 'Produit transform\u00E9', 'Autre']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
+    ddescriptionCourte: Schema.Attribute.String;
+    descriptionLong: Schema.Attribute.Blocks;
     disponibilite: Schema.Attribute.Boolean;
+    galerie: Schema.Attribute.Relation<'manyToOne', 'api::galerie.galerie'>;
     imagePrincipale: Schema.Attribute.Media<
       'images' | 'files' | 'videos' | 'audios'
     >;

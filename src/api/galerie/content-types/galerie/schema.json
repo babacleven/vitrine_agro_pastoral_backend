@@ -4,7 +4,8 @@
   "info": {
     "singularName": "galerie",
     "pluralName": "galeries",
-    "displayName": "Galerie"
+    "displayName": "Galerie",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,14 +15,15 @@
       "type": "string"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "type": {
       "type": "enumeration",
@@ -32,6 +34,12 @@
     },
     "date": {
       "type": "date"
+    },
+    "produits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::produit.produit",
+      "mappedBy": "galerie"
     }
   }
 }

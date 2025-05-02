@@ -4,7 +4,8 @@
   "info": {
     "singularName": "activite",
     "pluralName": "activites",
-    "displayName": "Activite"
+    "displayName": "Activite",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,14 +18,15 @@
       "type": "blocks"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "categorie": {
       "type": "enumeration",
@@ -37,6 +39,15 @@
     },
     "ordreAffichage": {
       "type": "integer"
+    },
+    "descriptionCourte": {
+      "type": "string"
+    },
+    "produits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::produit.produit",
+      "inversedBy": "activites"
     }
   }
 }

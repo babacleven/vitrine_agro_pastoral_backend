@@ -4,7 +4,8 @@
   "info": {
     "singularName": "actualite",
     "pluralName": "actualites",
-    "displayName": "Actualite"
+    "displayName": "Actualite",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,20 +18,26 @@
       "type": "blocks"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "datePublication": {
       "type": "date"
     },
     "slug": {
       "type": "uid"
+    },
+    "galeries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::galerie.galerie"
     }
   }
 }
